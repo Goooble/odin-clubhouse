@@ -24,8 +24,8 @@ const strategy = new localStrategy({usernameField: "username", passwordField: "p
             return done(null, false, {message: "User not found"})
         } 
 
-        // const match = await bcrypt.compare(password, rows[0].password)
-        const match = rows[0].password == password;
+        const match = await bcrypt.compare(password, rows[0].password)
+        // const match = rows[0].password == password;
         if(!match) return done(null, false, {message: "Password incorrect"}) 
         return done(null, rows[0])
     }catch(error){
