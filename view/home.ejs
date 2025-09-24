@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Clubhouse</title>
 </head>
 <body>
-    YOU MADE IT
-    <button><a href="/logout">Log out</a></button>
+    <button><a href="/auth-login/logout">Log out</a></button>
+    <div class="board">
+        <form action="/post/put-post" method="post">
+            <textarea name="post" id="post-box" placeholder="Create post"></textarea>
+            <input type="submit" value="post">
+        </form>
+    </div>
 </body>
 </html>

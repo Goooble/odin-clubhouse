@@ -8,7 +8,7 @@ import connectPgSimple from "connect-pg-simple";
 import isLoggedIn from "./controller/isLoggedIn.js";
 import signinRouter from "./route/signinRouter.js";
 import loginRouter from "./route/loginRouter.js";
-
+import postRouter from "./route/postRouter.js";
 const pgSession = connectPgSimple(session);
 config()//to inject env variables
 
@@ -63,6 +63,9 @@ app.get("/", (req, res)=> {
 app.get("/home", (req, res)=>{
     res.render("home")
 })
+
+//post routes
+app.use("/post", postRouter)
 
 
 app.use((err, req, res, next) => {
