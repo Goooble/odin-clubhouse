@@ -1,0 +1,63 @@
+html{
+    
+}
+.post{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.post p{
+    margin: 0;
+}
+.post-content{
+    font-weight: bold;
+    padding: 5px;
+    box-shadow: 1px 1px 10px rgb(179, 179, 179);
+    border-radius: 5px;
+    width:fit-content;
+}
+.post-username, .post-time{
+    color: rgb(77, 77, 77);
+    font-size: small;
+    padding-left: 5px;
+}
+
+.board{
+    margin: auto;
+    width: 50%;
+    box-shadow: 2px 2px 10px rgb(117, 117, 117);
+    padding: 50px;
+    padding-bottom: 10px;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.posts-container{
+    height: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 5px;
+}
+.board textarea{
+    width: 100%;
+    resize: none;
+    box-sizing: border-box;
+}
+.board input[type="submit"]{
+    width: 100%;
+}
+.put-post-container{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    
+}
+
+.put-post-container form{
+    width: 100%;
+}
