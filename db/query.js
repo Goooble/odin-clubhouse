@@ -19,4 +19,17 @@ async function createPost(post, id){
     }
 }
 
-export {createUser, createPost}
+async function getPosts(){
+    const SQL = `SELECT u.username, p.post, p.post_time from posts as p
+    INNER JOIN users as u ON p.user_id = u.user_id
+    ORDER BY p.post_time ASC;`
+    try{
+        const { rows } = await pool.query(SQL);
+        return rows;
+    }catch(error){
+        throw new Error("Cannot get posts");
+    }
+}
+
+
+export {createUser, createPost, getPosts}

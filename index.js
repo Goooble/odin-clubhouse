@@ -9,6 +9,7 @@ import isLoggedIn from "./controller/isLoggedIn.js";
 import signinRouter from "./route/signinRouter.js";
 import loginRouter from "./route/loginRouter.js";
 import postRouter from "./route/postRouter.js";
+import displayHome from "./controller/displayHome.js";
 const pgSession = connectPgSimple(session);
 config()//to inject env variables
 
@@ -61,10 +62,7 @@ app.get("/", (req, res)=> {
     res.redirect("/home");//temporary until i have a home page
 })
 
-app.get("/home", (req, res)=>{
-    console.log(req.user)
-    res.render("home")
-})
+app.get("/home", displayHome)
 
 //post routes
 app.use("/post", postRouter)

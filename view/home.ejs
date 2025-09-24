@@ -4,14 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clubhouse</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <button><a href="/auth-login/logout">Log out</a></button>
     <div class="board">
-        <form action="/post/put-post" method="post">
-            <textarea name="post" id="post-box" placeholder="Create post"></textarea>
-            <input type="submit" value="post">
-        </form>
+        <div class="posts-container">
+            <%posts.forEach((item) => { %>
+                <div class="post">
+                <p class="post-username"><%= item.username %></p>
+                <p class="post-content"><%= item.post %></p>
+                <p class="post-time"><%= item.post_time%></p>
+            </div>
+                   <% })%>
+        </div>
+        
+        <div class="put-post-container">
+            <form action="/post/put-post" method="post">
+                <textarea name="post" id="post-box" placeholder="Create post"></textarea>
+                <input type="submit" value="post">
+            </form>
+        </div>
     </div>
 </body>
 </html>
