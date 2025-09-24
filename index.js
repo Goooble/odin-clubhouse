@@ -32,17 +32,21 @@ app.use(session({
         pool: sessionPool,
     })
 }))
-
 app.use(passport.session());
 
+//routes
+//logger
 app.use((req, res, next)=>{
     console.log("middleware logger")
     console.log(req.user)
     next()
 })
 
+
+//to make every one login
 app.get("/*splat", isLoggedIn)
 
+//auth routes
 app.post("/login", passport.authenticate("local", {
     successRedirect: "/dashboard",
     failureRedirect: "/failed",
@@ -58,6 +62,8 @@ app.get("/logout", (req, res, next)=> {
     res.redirect("/")
 })
 
+
+//home routes
 app.get("/", (req, res)=> {
     res.redirect("/dashboard");//temporary until i have a home page
 })
