@@ -36,15 +36,15 @@ app.use(passport.session());
 
 //routes
 //logger
-app.use((req, res, next)=>{
-    console.log("middleware logger")
-    console.log(req.user)
-    next()
-})
+// app.use((req, res, next)=>{
+//     console.log("middleware logger")
+//     console.log(req.user)
+//     next()
+// })
 
 
 //to make every one login
-app.get("/*splat", isLoggedIn)
+app.get("*splat", isLoggedIn)
 
 //auth routes
 app.post("/login", passport.authenticate("local", {
