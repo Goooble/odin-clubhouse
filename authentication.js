@@ -9,7 +9,7 @@ passport.serializeUser((user, done)=>{
 
 passport.deserializeUser(async (id, done)=>{
     try{
-        const {rows} = await pool.query(`SELECT username from users WHERE user_id = $1`, [id]);
+        const {rows} = await pool.query(`SELECT user_id, username from users WHERE user_id = $1`, [id]);
         const user = rows[0];
         done(null, user);
     }catch(error){

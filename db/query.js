@@ -10,4 +10,13 @@ async function createUser(user, password){
     
 }
 
-export {createUser}
+async function createPost(post, id){
+    try{
+        await pool.query("INSERT INTO posts (post, user_id) VALUES($1, $2);", [post, id])
+    }catch(error){
+        console.log(error);
+        throw new Error("Cannot create post");;
+    }
+}
+
+export {createUser, createPost}

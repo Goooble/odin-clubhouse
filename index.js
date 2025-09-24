@@ -57,10 +57,12 @@ app.use("/auth-login", loginRouter)
 
 //home routes
 app.get("/", (req, res)=> {
+    
     res.redirect("/home");//temporary until i have a home page
 })
 
 app.get("/home", (req, res)=>{
+    console.log(req.user)
     res.render("home")
 })
 
