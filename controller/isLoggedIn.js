@@ -1,5 +1,4 @@
 function isLoggedIn(req, res, next){
-    console.log("checking for log in")
     if(!req.user){
         const message = req.session.messages || [];
 
