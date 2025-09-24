@@ -6,6 +6,8 @@ import { Pool } from "pg";
 import passport from "passport";
 import { Strategy as localStrategy } from "passport-local";
 import process from "process"
+import connectPgSimple from "connect-pg-simple";
+const pgSession = connectPgSimple(session);
 config()//to inject env variables
 
 const PORT = process.env.PORT || 6000;
@@ -17,10 +19,23 @@ app.set("view engine", "ejs")
 app.use(express.static("public"));
 app.use(express.urlencoded({extended:true}))
 
+const sessionPool = new Pool({
+    connectionString: process.env.SESSION_DB
+})
+
+app.use(session({
+    secret: "secretkey",
+    resave: false,
+    saveUninitialized:false,
+    store: new pgSession({
+        pool: sessionPool,
+    })
+}))
+
 
 
 app.get("/", (req, res)=> {
-    res.render("test");
+    res.send("ok")
 })
 
 app.listen(PORT, (error)=>{
