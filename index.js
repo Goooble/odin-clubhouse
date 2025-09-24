@@ -6,6 +6,7 @@ import passport from "./authentication.js";
 import process from "process"
 import connectPgSimple from "connect-pg-simple";
 import isLoggedIn from "./controller/isLoggedIn.js";
+import signin from "./controller/signin.js";
 
 const pgSession = connectPgSimple(session);
 config()//to inject env variables
@@ -42,13 +43,17 @@ app.use(passport.session());
 //     next()
 // })
 
-
+//has to be above splat
+app.get("/signin",(req, res)=>{
+    res.render("signin");
+})
+app.post("/signin", signin)
 //to make every one login
 app.get("*splat", isLoggedIn)
 
 //auth routes
 app.post("/login", passport.authenticate("local", {
-    successRedirect: "/dashboard",
+    successRedirect: "/home",
     failureRedirect: "/failed",
     failureMessage: true
 }))
@@ -65,11 +70,11 @@ app.get("/logout", (req, res, next)=> {
 
 //home routes
 app.get("/", (req, res)=> {
-    res.redirect("/dashboard");//temporary until i have a home page
+    res.redirect("/home");//temporary until i have a home page
 })
 
-app.get("/dashboard", (req, res)=>{
-    res.send("logged in")
+app.get("/home", (req, res)=>{
+    res.render("home")
 })
 
 
