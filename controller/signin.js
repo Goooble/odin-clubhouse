@@ -5,7 +5,7 @@ async function signin(req, res){
     const username = req.body.username;
     const password = await bcrypt.hash(req.body.password, 10);
     createUser(username, password)
-    res.redirect("/");
+    res.redirect("/auth-login/login");
 }
 
 export default signin

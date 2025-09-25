@@ -1,12 +1,15 @@
 import passport from "../authentication.js"
 import { Router } from "express";
+import isLoggedIn from "../controller/isLoggedIn.js";
 
 const loginRouter = Router();
 loginRouter.post("/login", passport.authenticate("local", {
-    successRedirect: "/home",
-    failureRedirect: "/failed",
+    successRedirect: "/",
+    failureRedirect: "/auth-login/login",
     failureMessage: true
 }))
+
+loginRouter.get("/login", isLoggedIn);
 
 loginRouter.get("/logout", (req, res, next)=> {
     req.logout((err)=>{

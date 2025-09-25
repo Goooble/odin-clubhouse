@@ -50,18 +50,13 @@ app.use(passport.session());
 //has to be above splat
 app.use("/auth-signin", signinRouter)
 //to make every one login
-app.get("*splat", isLoggedIn)
+// app.get("*splat", isLoggedIn)
 //auth routes
 app.use("/auth-login", loginRouter)
 
 
 //home routes
-app.get("/", (req, res)=> {
-    
-    res.redirect("/home");//temporary until i have a home page
-})
-
-app.get("/home", displayHome)
+app.get("/", displayHome)
 
 //post routes
 app.use("/post",isLoggedIn, postRouter)
