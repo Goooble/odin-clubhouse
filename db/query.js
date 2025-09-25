@@ -22,7 +22,7 @@ async function createPost(post, id){
 async function getPosts(){
     const SQL = `SELECT u.username, p.post,  
   CASE 
-    WHEN now() - p.post_time > interval '1 day' 
+    WHEN p.post_time::date != now()::date
       THEN to_char(post_time, 'DD Month YYYY')
     ELSE to_char(post_time, 'HH:MIpm')
   END as post_time
