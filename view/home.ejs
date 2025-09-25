@@ -12,7 +12,10 @@
         <div class="posts-container">
             <%posts.forEach((item) => { %>
                 <div class="post">
-                <p class="post-username"><%= item.username %></p>
+                    <%if(item.username){%>
+<p class="post-username"><%= item.username %></p>
+                    <%}%>
+                
                 <p class="post-content"><%= item.post %></p>
                 <p class="post-time"><%= item.post_time%></p>
             </div>
