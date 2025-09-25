@@ -8,6 +8,7 @@ async function displayHome(req, res) {
         delete item.username;
       });
     }
+    
   }
 
   console.log(req.user);

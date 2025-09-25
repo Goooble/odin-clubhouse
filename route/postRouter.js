@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { createPost } from "../db/query.js";
+import { createPost, deletePost } from "../db/query.js";
+import isAdmin from "../controller/isAdmin.js"
 const postRouter = Router();
 
 postRouter.post("/put-post", (req, res)=>{
@@ -9,5 +10,10 @@ postRouter.post("/put-post", (req, res)=>{
     res.redirect("/")
 })
 
+postRouter.post("/delete/:id", isAdmin, (req, res)=>{
+const id = req.params.id;
+deletePost(id);
+    res.redirect("/");
+})
 
 export default postRouter

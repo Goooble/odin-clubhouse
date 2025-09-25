@@ -24,12 +24,19 @@
       <div class="posts-container">
         <%posts.forEach((item) => { %>
         <div class="post">
+          <!-- username access is handled by the js somehow could have handled it here only -->
           <%if(item.username){%>
           <p class="post-username"><%= item.username %></p>
           <%}%>
 
           <p class="post-content"><%= item.post %></p>
           <p class="post-time"><%= item.post_time%></p>
+          <% if (user&&user.is_admin) { %>
+           <form action="/post/delete/<%= item.post_id %>" method="post">
+            <input type="submit" value="Delete">
+          </form>
+          <% } %>
+          
         </div>
         <% })%>
       </div>

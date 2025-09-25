@@ -20,7 +20,7 @@ async function createPost(post, id){
 }
 
 async function getPosts(){
-    const SQL = `SELECT u.username, p.post,  
+    const SQL = `SELECT p.post_id, u.username, p.post,  
   CASE 
     WHEN p.post_time::date != now()::date
       THEN to_char(post_time, 'DD Month YYYY')
@@ -36,6 +36,16 @@ async function getPosts(){
         throw new Error("Cannot get posts");
     }
 }
+
+async function deletePost(id){
+    try{
+        await pool.query("DELETE FROM posts WHERE post_id = $1", [id])
+    }catch(error){
+        console.log(error);
+        throw new Error("Cannot delete post");
+    }
+}
+
 async function updateMembership(id){
     try{
         await pool.query(`UPDATE users SET is_member=true where user_id=$1`, [id])
@@ -56,4 +66,4 @@ async function updateAdmin(id){
 
 
 
-export {createUser, createPost, getPosts, updateMembership, updateAdmin}
+export {createUser, createPost, getPosts, updateMembership, updateAdmin, deletePost}
