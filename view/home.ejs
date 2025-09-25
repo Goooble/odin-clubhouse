@@ -14,6 +14,10 @@
             <button><a href="/auth-login/logout">Log out</a></button>
         <%}%>
 
+        <% if (user && user.is_admin) { %>
+         <p>GODMODE BABY</p>
+        <% } %>
+
     <div class="board">
       <!-- too lazy to use css for this -->
       <center><h2>Clubhouse Board</h2></center>

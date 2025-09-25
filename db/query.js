@@ -45,6 +45,15 @@ async function updateMembership(id){
     }
 }
 
+async function updateAdmin(id){
+    try{
+        await pool.query(`UPDATE users SET is_admin=true where user_id=$1`, [id])
+    }catch(error){
+        console.log(error)
+        throw new Error("Cannot update admin status")
+    }
+}
 
 
-export {createUser, createPost, getPosts, updateMembership}
+
+export {createUser, createPost, getPosts, updateMembership, updateAdmin}

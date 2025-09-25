@@ -10,6 +10,9 @@
     <form action="/member/login" method="post">
         <label for="member-secret">Secret Key:</label>
         <input name="secret" type="password" id="member-secret" placeholder="Secret key: club">
+        <br>
+        <input type="checkbox" name="admin" value="true" id="admin-checkbox">
+        <label for="admin-checkbox">Are you an Admin?</label>
         <input type="submit" value="Enter the club">
     </form>
     <%if(typeof error === undefined){%>
