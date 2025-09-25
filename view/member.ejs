@@ -15,9 +15,7 @@
         <label for="admin-checkbox">Are you an Admin?</label>
         <input type="submit" value="Enter the club">
     </form>
-    <%if(typeof error === undefined){%>
-        <p><%=error%></p>
-    <%}%>
+        <p><%=locals.error%></p>
     <button><a href="/">Back</a></button>
     
 </body>

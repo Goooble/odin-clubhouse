@@ -9,7 +9,8 @@ function memberLogin(req, res) {
     updateMembership(req.user.user_id);
     res.redirect("/");
   } else {
-    res.render("member", { error: "Wrong Secret Key" });
+    res.locals.error = "Wrong secret key";
+    res.render("member");
   }
 }
 
