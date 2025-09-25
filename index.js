@@ -51,7 +51,6 @@ app.use(passport.session());
 app.use("/auth-signin", signinRouter)
 //to make every one login
 app.get("*splat", isLoggedIn)
-
 //auth routes
 app.use("/auth-login", loginRouter)
 
@@ -65,7 +64,7 @@ app.get("/", (req, res)=> {
 app.get("/home", displayHome)
 
 //post routes
-app.use("/post", postRouter)
+app.use("/post",isLoggedIn, postRouter)
 
 
 app.use((err, req, res, next) => {
