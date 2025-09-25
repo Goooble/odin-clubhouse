@@ -63,7 +63,7 @@ app.use("/post",isLoggedIn, postRouter)
 
 app.use((err, req, res, next) => {
   console.error(err);
-  res.status(500).send(err);
+  res.render("error", {error: err})
 });
 
 
