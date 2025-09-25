@@ -20,7 +20,13 @@ async function createPost(post, id){
 }
 
 async function getPosts(){
-    const SQL = `SELECT u.username, p.post, p.post_time from posts as p
+    const SQL = `SELECT u.username, p.post,  
+  CASE 
+    WHEN now() - p.post_time > interval '1 day' 
+      THEN to_char(post_time, 'DD Month YYYY')
+    ELSE to_char(post_time, 'HH:MIpm')
+  END as post_time
+    from posts as p
     INNER JOIN users as u ON p.user_id = u.user_id
     ORDER BY p.post_time DESC;`
     try{
