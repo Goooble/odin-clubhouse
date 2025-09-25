@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
+    <%if(user && !user.is_member){%>
+            <button><a href="/member/login">Membership</a></button>
+        <%}%>
     <%if(user){%>
             <button><a href="/auth-login/logout">Log out</a></button>
         <%}%>
@@ -43,5 +46,6 @@
         <%}%>
       </div>
     </div>
+    
   </body>
 </html>

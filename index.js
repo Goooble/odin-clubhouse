@@ -10,6 +10,8 @@ import signinRouter from "./route/signinRouter.js";
 import loginRouter from "./route/loginRouter.js";
 import postRouter from "./route/postRouter.js";
 import displayHome from "./controller/displayHome.js";
+import memberRouter from "./route/memberRouter.js";
+
 const pgSession = connectPgSimple(session);
 config()//to inject env variables
 
@@ -47,12 +49,9 @@ app.use(passport.session());
 
 
 //auth routes
-//has to be above splat
 app.use("/auth-signin", signinRouter)
-//to make every one login
-// app.get("*splat", isLoggedIn)
-//auth routes
 app.use("/auth-login", loginRouter)
+app.use("/member", memberRouter)
 
 
 //home routes

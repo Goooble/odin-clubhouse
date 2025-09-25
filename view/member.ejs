@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Login</title>
+</head>
+<body>
+    <h1>Are you a club member?</h1>
+    <form action="/member/login" method="post">
+        <label for="member-secret">Secret Key:</label>
+        <input name="secret" type="password" id="member-secret" placeholder="Secret key: club">
+        <input type="submit" value="Enter the club">
+    </form>
+    <%if(typeof error === undefined){%>
+        <p><%=error%></p>
+    <%}%>
+    <button><a href="/">Back</a></button>
+    
+</body>
+</html>

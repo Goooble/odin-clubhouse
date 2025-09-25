@@ -36,6 +36,15 @@ async function getPosts(){
         throw new Error("Cannot get posts");
     }
 }
+async function updateMembership(id){
+    try{
+        await pool.query(`UPDATE users SET is_member=true where user_id=$1`, [id])
+    }catch(error){
+        console.log(error)
+        throw new Error("Cannot update membership status")
+    }
+}
 
 
-export {createUser, createPost, getPosts}
+
+export {createUser, createPost, getPosts, updateMembership}
